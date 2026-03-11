@@ -138,6 +138,7 @@ function getStats(currentPoke, rows, offset) {
 		var currentRow = rows[x] ? rows[x].split(/[/:]/) : '';
 		var evs = {};
 		var ivs = {};
+		var dvs = {};
 		var ev;
 		var j;
 
@@ -166,17 +167,17 @@ function getStats(currentPoke, rows, offset) {
 			if (gen == 1) {
 				for (j = 1; j < currentRow.length; j++) {
 					currentIV = currentRow[j].trim().split(" ");
-					currentIV[1] = statToLegacyStatGen1(currentIV[1].toLowerCase()) / 2;
-					ivs[currentIV[1]] = parseInt(currentIV[0]) / 2;
+					currentIV[1] = statToLegacyStatGen1(currentIV[1].toLowerCase());
+					dvs[currentIV[1]] = parseInt(currentIV[0]) / 2;
 				}
-				currentPoke.ivs = ivs;
+				currentPoke.dvs = dvs;
 			} else if (gen == 2) {
 				for (j = 1; j < currentRow.length; j++) {
 					currentIV = currentRow[j].trim().split(" ");
-					currentIV[1] = statToLegacyStat(currentIV[1].toLowerCase()) / 2;
-					ivs[currentIV[1]] = parseInt(currentIV[0]) / 2;
+					currentIV[1] = statToLegacyStat(currentIV[1].toLowerCase());
+					dvs[currentIV[1]] = parseInt(currentIV[0]) / 2;
 				}
-				currentPoke.ivs = ivs;
+				currentPoke.dvs = dvs;
 			} else {
 				for (j = 1; j < currentRow.length; j++) {
 					currentIV = currentRow[j].trim().split(" ");
