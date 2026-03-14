@@ -147,7 +147,12 @@ function getStats(currentPoke, rows, offset) {
 			currentPoke.level = parseInt(currentRow[1].trim());
 			break;
 		case 'EVs':
-			if (gen == 1) {
+			if (gen === 1) {
+				evs['hp'] = 0;
+				evs['at'] = 0;
+				evs['df'] = 0;
+				evs['sl'] = 0;
+				evs['sp'] = 0;
 				for (j = 1; j < currentRow.length; j++) {
 					currentEV = currentRow[j].trim().split(" ");
 					currentEV[1] = statToLegacyStatGen1(currentEV[1].toLowerCase());
@@ -155,6 +160,14 @@ function getStats(currentPoke, rows, offset) {
 				}
 			}
 			else {
+				if (gen === 2) {
+					evs['hp'] = 0;
+					evs['at'] = 0;
+					evs['df'] = 0;
+					evs['sa'] = 0;
+					evs['sd'] = 0;
+					evs['sp'] = 0;
+				}
 				for (j = 1; j < currentRow.length; j++) {
 					currentEV = currentRow[j].trim().split(" ");
 					currentEV[1] = statToLegacyStat(currentEV[1].toLowerCase());

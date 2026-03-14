@@ -224,7 +224,7 @@ var Pokemon = (function () {
         var cur = {};
         if (current) {
             (0, util_1.assignWithout)(cur, current, SPC);
-            if (current.spc) {
+            if (current.spc != undefined) {
                 cur.spa = current.spc;
                 cur.spd = current.spc;
             }
